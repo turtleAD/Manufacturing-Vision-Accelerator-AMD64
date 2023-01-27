@@ -1,7 +1,8 @@
+import math
 import numpy as np
 import cv2
 import torch
-import math
+
         
 from inference.utils.yolo_onnx_preprocessing_utils import letterbox
         
@@ -28,7 +29,7 @@ def frame_resize(img, target, model):
         assert batch_size == img_data.shape[0]
         return img_data, ratio, pad_list
 
-    elif model in ('acv'):
+    elif model in ('acv', 'classification'):
         padColor = [0,0,0]
         h, w = img.shape[:2]
         sh, sw = (target, target)
